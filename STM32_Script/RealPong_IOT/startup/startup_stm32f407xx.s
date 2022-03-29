@@ -227,14 +227,6 @@ g_pfnVectors:
   .word     HASH_RNG_IRQHandler               /* Hash and Rng                 */
   .word     FPU_IRQHandler                    /* FPU                          */
                          
-                         
-/*******************************************************************************
-*
-* Provide weak aliases for each Exception handler to the Default_Handler. 
-* As they are weak aliases, any function with the same name will override 
-* this definition.
-* 
-*******************************************************************************/
    .weak      NMI_Handler
    .thumb_set NMI_Handler,Default_Handler
   
@@ -504,5 +496,3 @@ g_pfnVectors:
 
    .weak      FPU_IRQHandler                  
    .thumb_set FPU_IRQHandler,Default_Handler  
-
-/************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
