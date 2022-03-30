@@ -1,6 +1,8 @@
 *.shader linguist-detectable=false
 *.cginc linguist-detectable=false
 *.mk linguist-detectable=false
+*.makefile linguist-detectable=false
+*.d linguist-detectable=false
 *.txt linguist-detectable=false
 *.mat linguist-detectable=false
 *.meta linguist-detectable=false
