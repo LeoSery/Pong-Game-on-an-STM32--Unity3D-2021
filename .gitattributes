@@ -1,0 +1,11 @@
+*.shader linguist-detectable=false
+*.cginc linguist-detectable=false
+*.mk linguist-detectable=false
+*.txt linguist-detectable=false
+*.mat linguist-detectable=false
+*.meta linguist-detectable=false
+*.mat.meta linguist-detectable=false
+*.json linguist-detectable=false
+*.cproject linguist-detectable=
+*.xml linguist-detectable=false
+*.project linguist-detectable=false
