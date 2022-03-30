@@ -1,3 +1,10 @@
+///////////////////////////////////////////////////////
+// STM32 Pong Project - Léo Séry && Matthias Flament
+// ####
+// Script that handles ball instantiation and physics.
+// script by Léo Séry - 26/03/2022
+// ####
+/////////////////////////////////////////////////////// 
 using UnityEngine;
 
 public class Ball : MonoBehaviour

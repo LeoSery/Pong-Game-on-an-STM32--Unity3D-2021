@@ -1,6 +1,6 @@
 # Pong-Game-on-an-STM32
 
-Game made with @Tartoo during our bachelor year 2 (2021/2022) for an IOT course at Ynov.
+Game made with [@Tartoo](https://github.com/Tartoo) during our bachelor year 2 (2021/2022) for an IOT course at Ynov.
 
 ## Summary
 
@@ -12,8 +12,6 @@ Game made with @Tartoo during our bachelor year 2 (2021/2022) for an IOT course 
     - C. How to Play the project
     - D. Problems solving
 - ### III. STM32 part
-
-    - A. Aaa
 ```
 
 ## I. Presentation
@@ -73,37 +71,46 @@ If you have an error concerning a package go to: **_"Window > Package Manager"_*
 
 ## CubeMx configuration :
 
-First of all, when you arrive on Stm32 CubeMx, you will need to chose the card wich you use. Then, you have to congifure it in a way where we can play with 2 joysticks.
-![](https://i.imgur.com/vHWqQ6k.jpg)
+First of all, when you arrive on ***Stm32 CubeMx***, you will need to chose the card wich you use. Then, you have to congifure it in a way where we can play with *2 joysticks*.
+![](https://i.imgur.com/hrwuxlr.png)
 
-To do that, you have to add 2 analogs and usart and configure them like this :
-![](https://i.imgur.com/dxWpumM.png)
+To do this, you must add 2 analogs and configure them like this :
+![](https://i.imgur.com/HyrcfPV.png)
+
 For the ADC :
-![](https://i.imgur.com/jdwDvrc.png)
-![](https://i.imgur.com/kCVXps9.png)
-![](https://i.imgur.com/nbDRKus.png)
+![](https://i.imgur.com/jaFBrdL.png)
+![](https://i.imgur.com/I5trsig.png)
+
 
 Do the same for the second ADC but be carefull to use differents pin each time !
 
 For the usart you will have to do this :
-![](https://i.imgur.com/1QW4QvE.png)
+![](https://i.imgur.com/2GYp0Mt.png)
+
 
 ## Joystick connection :
 
-When the configuration is done, you have to connect joysitcks to the board.
-![](https://i.imgur.com/yjmbS6K.jpg)
-Grnd must be plugged in ground, 5V in 3V, VRx in PA1 for the 1st joystick and VRy in PB0 again for the first joystick.
+When the configuration is done, you have to connect joysitcks to the board. Ground must be plugged in ground, 5V in 3V, VRx in PA1 for the 1st joystick and VRy in PB0 again for the first joystick.
 
 When it's done it should look like this :
+
 ![](https://i.imgur.com/6YMyuHN.jpg)
 ![](https://i.imgur.com/8RNmc1P.jpg)
 
 ## Systeme Workbench :
 
 After you have done this, you will have to generate a code on systeme workbench with those parameters :
-![](https://i.imgur.com/Mnx9rHf.png)
 
-In SystemeWorkbench you will have to create your code inside the infinite loop : ![](https://i.imgur.com/KQaUTFe.png)
-This code get the position of the joystick in hexadecimals and stock them in 2 value for each joystick. Then, it display them on putty so we can know the values when the joystick is up or down : 00 & FF.
+![](https://i.imgur.com/6VxgXvT.png)
 
-The result look like this : vidéo
+
+In SystemeWorkbench you will have to create your code inside the infinite loop :
+![](https://i.imgur.com/BNdMB4g.png)
+
+This code get the position of the joystick in hexadecimals and stock them in 2 value for each joystick. Then, it display them on Ptty so we can know the values when the joystick is up or down : 00 & FF.
+
+Then we retrieve the value in unity3D and with a script we convert the Hexadecimal value into a displacement vector on the Y axis to move the pong paddle.
+
+In the C# script named [`ReadData.cs`](https://github.com/LeoSery/Pong-Game-on-an-STM32/blob/master/PongGame/Assets/Scripts/ExternalsData/ReadData.cs) we convert hexadecimal values to decimal.
+
+and finally in the [`Paddle.cs`](https://github.com/LeoSery/Pong-Game-on-an-STM32/blob/master/PongGame/Assets/Scripts/Game/Paddle.cs) script we use these decimal values as a 2D motion vector on the Y axis.

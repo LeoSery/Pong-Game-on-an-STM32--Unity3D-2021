@@ -1,3 +1,10 @@
+///////////////////////////////////////////////////////
+// STM32 Pong Project - Léo Séry && Matthias Flament
+// ####
+// Script to manage the adversary paddle.
+// script by Léo Séry - 26/03/2022
+// ####
+/////////////////////////////////////////////////////// 
 using UnityEngine;
 
 public class AdversaryPaddle : Paddle

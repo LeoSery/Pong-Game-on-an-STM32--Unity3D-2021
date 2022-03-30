@@ -1,3 +1,10 @@
+///////////////////////////////////////////////////////
+// STM32 Pong Project - Léo Séry && Matthias Flament
+// ####
+// Script to retrieve data via the Serial port and convert them into decimal values.
+// script by Léo Séry - 17/03/2022
+// ####
+/////////////////////////////////////////////////////// 
 using UnityEngine;
 using System.Collections;
 using System.IO.Ports;

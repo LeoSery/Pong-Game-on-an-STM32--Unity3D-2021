@@ -1,3 +1,10 @@
+///////////////////////////////////////////////////////
+// STM32 Pong Project - Léo Séry && Matthias Flament
+// ####
+// Script to manage basic gameplay.
+// script by Léo Séry - 26/03/2022
+// ####
+/////////////////////////////////////////////////////// 
 using UnityEngine;
 using TMPro;
 

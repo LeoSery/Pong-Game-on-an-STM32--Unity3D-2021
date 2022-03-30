@@ -1,3 +1,10 @@
+///////////////////////////////////////////////////////
+// STM32 Pong Project - Léo Séry && Matthias Flament
+// ####
+// Script to read joystick data with an STM32 car.
+// script by Matthias Flament - 17/03/2022
+// ####
+/////////////////////////////////////////////////////// 
 #include "main.h"
 #include "usb_host.h"
 #include <stdio.h>
@@ -27,8 +34,8 @@ static void MX_USART2_UART_Init(void);
 static void MX_ADC2_Init(void);
 void MX_USB_HOST_Process(void);
 
-void ecris_char(uint8_t car);
-void ecris_txt(uint8_t *txt);
+void msg_char(uint8_t car);
+void msg_txt(uint8_t *txt);
 
 int main(void)
 {
@@ -52,7 +59,7 @@ int main(void)
  
   HAL_ADC_Start_DMA(&hadc1, (uint32_t *)adcBuffer, 2);
   HAL_ADC_Start_DMA(&hadc2, (uint32_t *)adcBuffer2, 2);
-  ecris_txt("Salut les gars !\n");
+  msg_txt("Hey !\n");
   while (1)
   {
 	  uint8_t v1 = adcBuffer[0];
@@ -61,7 +68,7 @@ int main(void)
 	  uint8_t v4 = adcBuffer2[1];
 	  char mess[30];
 	  sprintf(mess, "%X|%X|%X|%X \r\n", v1, v2, v3, v4);
-	  ecris_txt(mess);
+	  msg_txt(mess);
    
     MX_USB_HOST_Process();   
   }
@@ -332,14 +339,14 @@ static void MX_GPIO_Init(void)
 
 }
 
-void ecris_char(uint8_t car){
+void msg_char(uint8_t car){
 	HAL_UART_Transmit(&huart2,&car,1,1000);
 }
 
-void ecris_txt(uint8_t *txt){
+void msg_txt(uint8_t *txt){
 	int i;
 	for(i=0;i<strlen(txt);i++) {
-		ecris_char(txt[i]);
+		msg_char(txt[i]);
 	}
 }
 
