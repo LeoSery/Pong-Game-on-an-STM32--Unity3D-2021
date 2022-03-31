@@ -1,31 +1,37 @@
 ///////////////////////////////////////////////////////
-// STM32 Pong Project - LÃ©o SÃ©ry && Matthias Flament
+// STM32 Pong Project - Léo Séry && Matthias Flament
 // ####
 // Script to manage the adversary paddle.
-// script by LÃ©o SÃ©ry - 26/03/2022
+// script by Léo Séry - 26/03/2022
 // ####
 /////////////////////////////////////////////////////// 
 using UnityEngine;
 
 public class AdversaryPaddle : Paddle
 {
-    public Rigidbody2D ball;
+    private Vector2 _direction;
 
-    private void FixedUpdate()
+    public void Update()
     {
-        if (ball.velocity.x > 0.0f)
+        if (Input.GetKey(KeyCode.UpArrow))
         {
-            if (ball.position.y > transform.position.y)
-                _rigidBody.AddForce(Vector2.up * speed);
-            else if (ball.position.y < transform.position.y)
-            _rigidBody.AddForce(Vector2.down * speed);
+            _direction = Vector2.up;
+        }
+        else if (Input.GetKey(KeyCode.DownArrow))
+        {
+            _direction = Vector2.down;
         }
         else
         {
-            if (transform.position.y > 0.0f)
-                _rigidBody.AddForce(Vector2.down * speed);
-            else if (transform.position.y < 0.0f)
-                _rigidBody.AddForce(Vector2.up * speed);
+            _direction = Vector2.zero;
+        }
+    }
+
+    public void FixedUpdate()
+    {
+        if (_direction.sqrMagnitude > 0)
+        {
+            _rigidBody.AddForce(_direction * speed);
         }
     }
 }

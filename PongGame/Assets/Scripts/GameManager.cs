@@ -18,8 +18,22 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI playerScoreText;
     public TextMeshProUGUI adversaryScoreText;
 
+    public GameObject ScoreUI;
+    public GameObject PaddlesUI;
+    public GameObject CenterLineUI;
+    public GameObject BallUI;
+
     private int _playerScore;
     private int _adversaryScore;
+
+    private Menu MenuManager;
+
+    public bool isInGame = false;
+
+    public void Awake()
+    {
+        MenuManager = gameObject.GetComponent<Menu>();
+    }
 
     public void PlayerScores()
     {
@@ -41,5 +55,35 @@ public class GameManager : MonoBehaviour
         adversaryPaddle.ResetPosition();
         ball.ResetPosition();
         ball.AddStartingForce();
+    }
+
+    public void LoadMainMenuUI()
+    {
+        MenuManager.MainMenuUI.SetActive(true);
+        ScoreUI.SetActive(false);
+        PaddlesUI.SetActive(false);
+        CenterLineUI.SetActive(false);
+        BallUI.SetActive(false);
+    }
+
+    public void LoadGameUI()
+    {
+        MenuManager.MainMenuUI.SetActive(false);
+        ScoreUI.SetActive(true);
+        PaddlesUI.SetActive(true);
+        CenterLineUI.SetActive(true);
+        BallUI.SetActive(true);
+    }
+    
+    public void PrepareGameForAI()
+    {
+        adversaryPaddle.GetComponent<AIPaddle>().enabled = true;
+        adversaryPaddle.GetComponent<AdversaryPaddle>().enabled = false;
+    }
+
+    public void PrepareGameForTwoPlayers()
+    {
+        adversaryPaddle.GetComponent<AIPaddle>().enabled = false;
+        adversaryPaddle.GetComponent<AdversaryPaddle>().enabled = true;
     }
 }
